@@ -1,0 +1,85 @@
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.components-base-control__field,
+.components-base-control {
+  width: 100%;
+}
+
+.astro-capture-details-media-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.astro-capture-details-media-container--with-image .dashicons-hourglass {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  font-size: 24px;
+  animation: rotating 2s linear infinite;
+  z-index: 1;
+}
+.astro-capture-details-media-container--with-image .astro-capture-details-overlay {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: var(--theme-palette-color-4);
+  color: rgb(20, 113, 20);
+  padding: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+  border-radius: 2px;
+  z-index: 1;
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder {
+  position: absolute;
+  bottom: 0;
+  background-color: transparent;
+  border: none;
+  z-index: 1;
+  box-shadow: none;
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder .components-placeholder__label {
+  display: none;
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder .components-button.is-primary {
+  outline: var(--theme-palette-color-1);
+  border-color: var(--theme-palette-color-1);
+  background-color: var(--theme-palette-color-1);
+  color: var(--theme-palette-color-4);
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder .components-button.is-primary:hover {
+  outline: var(--theme-palette-color-2);
+  border-color: var(--theme-palette-color-2);
+  background-color: var(--theme-palette-color-2);
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder .components-placeholder__instructions {
+  color: var(--theme-palette-color-4);
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder .components-button.is-secondary {
+  outline: var(--theme-palette-color-1);
+  border-color: var(--theme-palette-color-1);
+  color: var(--theme-palette-color-1);
+  background-color: var(--theme-palette-color-4);
+  box-shadow: none;
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder .components-button.is-secondary:hover {
+  outline: var(--theme-palette-color-1);
+  border-color: var(--theme-palette-color-1);
+  background-color: var(--theme-palette-color-1);
+  color: var(--theme-palette-color-4);
+}
+.astro-capture-details-media-container--with-image .block-editor-media-placeholder .components-placeholder__fieldset {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 16px;
+}

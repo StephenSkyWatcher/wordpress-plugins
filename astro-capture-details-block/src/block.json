@@ -1,0 +1,133 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/astro-capture-details-block",
+	"version": "0.1.0",
+	"title": "Astro Capture Details Block",
+	"category": "astronomy",
+	"icon": "camera",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		}
+	},
+	"attributes": {
+		"alignment": {
+			"enum": [
+				"left",
+				"right",
+				"top",
+				"bottom"
+			],
+			"default": "left"
+		},
+		"image": {
+			"type": "string",
+			"default": ""
+		},
+		"annotated_image": {
+			"type": "string",
+			"default": ""
+		},
+		"solved": {
+			"type": "boolean",
+			"default": false
+		},
+		"primary_camera": {
+			"enum": [
+				"Canon T8i",
+				"Canon T2i"
+			],
+			"default": "Canon T8i"
+		},
+		"guide_camera": {
+			"enum": [
+				"ZWO ASI120MM Mini",
+				""
+			],
+			"default": "Canon T8i"
+		},
+
+
+		"flats": {
+			"type": "boolean",
+			"default": true
+		},
+		"darks": {
+			"type": "boolean",
+			"default": true
+		},
+		"biases": {
+			"type": "boolean",
+			"default": true
+		},
+
+
+		"ra_center": {
+			"type": "number",
+			"default": 0
+		},
+		"dec_center": {
+			"type": "number",
+			"default": 0
+		},
+		"ra_center_h": {
+			"type": "number",
+			"default": 0
+		},
+		"ra_center_m": {
+			"type": "number",
+			"default": 0
+		},
+		"ra_center_s": {
+			"type": "number",
+			"default": 0
+		},
+		"dec_center_sign": {
+			"type": "number",
+			"default": 1
+		},
+		"dec_center_d": {
+			"type": "number",
+			"default": 0
+		},
+		"dec_center_m": {
+			"type": "number",
+			"default": 0
+		},
+		"dec_center_s": {
+			"type": "number",
+			"default": 0
+		},
+		"orientation_center": {
+			"type": "number",
+			"default": 0
+		},
+		"pixscale": {
+			"type": "number",
+			"default": 0
+		},
+		"fieldw": {
+			"type": "number",
+			"default": 0
+		},
+		"fieldh": {
+			"type": "number",
+			"default": 0
+		},
+		"fieldunits": {
+			"type": "string",
+			"default": "degrees"
+		}
+	},
+	"textdomain": "astro-capture-details-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

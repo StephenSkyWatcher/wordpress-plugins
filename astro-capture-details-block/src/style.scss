@@ -1,0 +1,178 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+//  --theme-palette-color-1
+//  --theme-palette-color-2
+//  --theme-palette-color-3
+//  --theme-palette-color-4
+//  --theme-palette-color-5
+
+@mixin link_styling() {
+	font-weight: 600;
+	color: var(--theme-palette-color-1);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+@mixin code_styling() {
+	display: inline-flex;
+	align-items: center;
+	tab-size: 4;
+	border-radius: 3px;
+	padding: 2px 4px;
+	font-size: .9em;
+	font-weight: 400;
+	color: var(--theme-palette-color-1);
+	background: var(--theme-palette-color-6);
+	margin: 0 2px 0 0;
+}
+
+ .wp-block-create-block-astro-capture-details-block {
+	&__left {
+		flex-direction: row;
+		height: 100%;
+	}
+
+	&__right {
+		flex-direction: row-reverse;
+		height: 100%;
+	}
+
+	&__top {
+		flex-direction: column;
+	}
+
+	&__bottom {
+		flex-direction: column-reverse;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		gap: 12px;
+
+		.astro-capture-details-block_image-container {
+			flex: 3;
+			min-width: 400px;
+			background: #000;
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-self: center;
+
+			img {
+				max-width: 100%;
+				max-height: 100%;
+				position: relative;
+				z-index: +1;
+			}
+
+			img.annotated {
+				position: absolute;
+				top: 0;
+				z-index: +2;
+			}
+
+			.stk-block-button.is-style-default.stk-block {
+				position: absolute;
+				top: 2px;
+				left: 2px;
+				z-index: +3;
+				
+				.annotations-btn {
+					color: var(--theme-palette-color-1);;
+					border: solid 1px var(--theme-palette-color-1);;
+					background: #fff;
+					border-radius: 3px;
+					cursor: pointer;
+	
+					&:hover,
+					&--active {
+						background: var(--theme-palette-color-1);
+						color: #fff;
+					}
+				}
+			}
+			
+		}
+
+		.astro-capture-details-block_content {
+			flex: 1;
+			min-width: 400px;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		} 
+
+		.astro-capture-details-block_image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;;
+			object-fit: cover;
+			background-repeat: no-repeat;
+			background-size: 200%;
+			background-position: center center;	
+
+			filter: blur(7px) opacity(.4);
+			-webkit-filter: blur(7px) opacity(.4);
+		}
+
+		.astro-capture-details-group,
+		.astro-capture-details-block {
+			flex: 1 1 0px;
+			width: 100%;
+		}
+
+		.astro-capture-details-group {
+			display: flex;
+			flex-wrap: wrap;
+			flex-grow: 2;
+			gap: 24px;
+			flex: 1;
+		}
+		
+		.astro-capture-details-block h6.astro-capture-details-block_header {
+			margin: 0;
+			text-wrap: nowrap;
+			color: var(--theme-palette-color-4);
+		}
+		
+		.astro-capture-details-block p.astro-capture-details-block_value {
+			margin: 0;
+			display: inline-flex;
+			align-items: center;
+			text-wrap: nowrap;
+
+			a {
+				@include link_styling();
+			}
+
+			code {
+				@include code_styling();
+			}
+		}
+	}
+}
+ 
+.stk-block-heading__bottom-line {
+	background: var(--theme-palette-color-1) !important;
+}
+
+.stk-block-icon-list .stk-block-icon-list__ul .stk-block-icon-list-item .stk-block-icon-list-item__content {
+	a { @include link_styling(); }
+
+	.stk--svg-wrapper .stk--inner-svg svg :is(use,g,path,rect,polygon,ellipse) {
+		fill: var(--theme-palette-color-1) !important;
+	}
+}

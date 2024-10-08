@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/astro-capture-equipment-details",
+  "version": "0.1.0",
+  "title": "Astro Capture Equipment Details",
+  "category": "widgets",
+  "icon": "list-view",
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "attributes": {
+    "defaults": {
+      "enum": [
+        "Refractor",
+        "SCT",
+        "Canon T8i",
+        "Canon T2i"
+      ],
+      "default": "Refractor"
+    },
+    "primary_telescope": {
+      "enum": [
+        "Sharpstar 76EDPH",
+        "Celestron SCT 6\"",
+        "Canon 75mm-300mm Lens",
+        "Canon 18mm-55mm Lens",
+        "Other"
+      ],
+      "default": "Sharpstar 76EDPH"
+    },
+    "primary_camera": {
+      "enum": [
+        "Canon T8i",
+        "Canon T2i"
+      ],
+      "default": "Canon T8i"
+    },
+    "mount": {
+      "enum": [
+        "12\" Pier",
+        "6\" Pier",
+        "Star Adventurer Mini",
+        "Camera Tripod",
+        "None/Other"
+      ],
+      "default": "Canon T8i"
+    },
+    "guiding": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "astro-capture-equipment-details",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
