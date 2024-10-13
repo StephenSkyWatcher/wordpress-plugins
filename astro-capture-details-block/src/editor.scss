@@ -38,6 +38,8 @@
     position: relative;
 
     &--with-image {
+        .components-placeholder__instructions { display: none; }
+
         .dashicons-hourglass {
             position: absolute;
             top: 50%;
@@ -111,11 +113,6 @@
                 flex-direction: row;
                 flex-wrap: nowrap;
                 gap: 16px;
-
-                // button,
-                // .components-drop-zone {
-                //     width: calc(50% - 16px);
-                // }
             }
         }
 
