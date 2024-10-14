@@ -134,16 +134,15 @@ export default function Edit(props) {
 		if (constellationCategory) _categories.push(constellationCategory.id);
 		if (objectTypeCategory) _categories.push(objectTypeCategory.id);
 		
-
-		setAttributes(matchData);
+		setAttributes({ matchData, designation });
 		updateData({...data, ...matchData });
 
 		wp.data.dispatch( 'core/editor' ).editPost( { categories: _categories } );
 	}
 
-	const onAnnotate = async ({data, image}) => {
-		setAttributes({ ...data, image, solved: true });
-		updateData({image});
+	const onAnnotate = async (data) => {
+		setAttributes({ ...data, solved: true });
+		updateData(data);
 	};
 
 	return (

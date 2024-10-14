@@ -41,7 +41,8 @@ const ImageGroup = (props) => {
 			fieldw: parseFloat(res.fieldw),
 			fieldh: parseFloat(res.fieldh),
 			fieldunits: res.fieldunits,
-			annotated: res.annotated,
+			image: url,
+			annotated_image: res.annotated,
 		};
 
 		return data
@@ -49,22 +50,22 @@ const ImageGroup = (props) => {
 
 	const onSelectMedia = media => {
 		setSolved(false);
-
-		const handler = async () => {
-			const src =
-				get(media, ["sizes", "large", "url"]) ||
-				get(media, ["media_details", "sizes", "large", "source_url"]);
-	
-			const data = await astrometrySolve(src || media.url);
 		
-			onAnnotate({data, image: src || media.url});
+		const handler = async () => {
+			// const src =
+			// 	get(media, ["sizes", "large", "url"]) ||
+			// 	get(media, ["media_details", "sizes", "large", "source_url"]);
+	
+			const data = await astrometrySolve(media.originalImageURL);
+			wp.media.featuredImage.set(media.id);
+			console.log({ media })
+			onAnnotate(data);
 			setSolved(true);
 			setSolving(false);
 		};
 
 		handler();
 	};
-
 
 	return (
 		<div class="astro-capture-details-block_image-container">

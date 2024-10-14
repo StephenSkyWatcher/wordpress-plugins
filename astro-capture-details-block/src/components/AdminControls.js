@@ -19,6 +19,7 @@ const AdminControls = (props) => {
     const { attributes, setAttributes, handleDesignation } = props;
 
 	const [designation, setDesignation] = useState(attributes.designation);
+	
     return (
         <InspectorControls key="setting">
 				<Panel>

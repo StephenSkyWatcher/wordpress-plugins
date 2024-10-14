@@ -108,8 +108,20 @@ function find_astro_object() {
 
 function astrometry() {
     function astrometry_callback($data) {
+        
         $queryParams = $data->get_body();
+        
+        $wcsinfo_exists = shell_exec("command -v wcsinfo");
+        $solvefield_exists = shell_exec("command -v solve-field");
 
+        if (!$wcsinfo_exists || !$solvefield_exists) {
+            return new WP_Error(
+                'error',
+                'Astrometry tools not installed',
+                [ 'wcsinfo' => $wcsinfo_exists, 'solve-field' => $solvefield_exists]
+            );
+        }
+        
         $params = json_decode(str_replace('request-json=', '', urldecode($queryParams)), true);
 
         $filepath = preg_replace('/\.\w+$/', '', str_replace('https://www.stephenskywatcher.com/', '', $params['url']));
@@ -134,6 +146,7 @@ function astrometry() {
                     $wcs->{$pieces[0]} = $pieces[1];
                 }
             }
+
             $wcs->{'annotated'} = str_replace("/var/www/html/", '/', $annotated_file);
 
             return $wcs;

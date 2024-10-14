@@ -34,145 +34,126 @@
 	margin: 0 2px 0 0;
 }
 
- .wp-block-create-block-astro-capture-details-block {
-	&__left {
-		flex-direction: row;
-		height: 100%;
-	}
+@mixin astroCheckbox($label) {
+	$switch_height: 30px;
+	$switch_width: 50px;
+	$switch_border_size: 0px;
+	$switch_border_color: #d8d8d8;
+	$switch_inactive_bg: #d8d8d8;
+	$switch_active_bg: #21759b;
 
-	&__right {
-		flex-direction: row-reverse;
-		height: 100%;
-	}
+	$button_active_color: #fff;
+	$button_inactive_color: #fff;
+	$button_size: 20px;
+	$button_padding: 4px;
 
-	&__top {
-		flex-direction: column;
-	}
-
-	&__bottom {
-		flex-direction: column-reverse;
-	}
-
-	&__wrapper {
+	.astro-checkbox {
+		position: relative;
+		cursor: pointer;
 		display: flex;
-		flex-wrap: wrap;
-		align-items: stretch;
-		gap: 12px;
+		flex-direction: row-reverse;
+		gap: 8px;
 
-		.astro-capture-details-block_image-container {
-			flex: 3;
-			min-width: 400px;
-			background: #000;
-			position: relative;
-			overflow: hidden;
-			display: flex;
-			align-items: center;
-			justify-self: center;
-
-			img {
-				max-width: 100%;
-				max-height: 100%;
-				position: relative;
-				z-index: +1;
-			}
-
-			img.annotated {
-				position: absolute;
-				top: 0;
-				z-index: +2;
-			}
-
-			.stk-block-button.is-style-default.stk-block {
-				position: absolute;
-				top: 2px;
-				left: 2px;
-				z-index: +3;
-				
-				.annotations-btn {
-					color: var(--theme-palette-color-1);;
-					border: solid 1px var(--theme-palette-color-1);;
-					background: #fff;
-					border-radius: 3px;
-					cursor: pointer;
-	
-					&:hover,
-					&--active {
-						background: var(--theme-palette-color-1);
-						color: #fff;
-					}
-				}
-			}
-			
+		&-name::before {
+			display: inline-block;
+			padding-right: 4px;
+			content: $label;
+			color: #000;
 		}
 
-		.astro-capture-details-block_content {
-			flex: 1;
-			min-width: 400px;
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-		} 
+		&-toggle {
+			box-sizing: border-box;
+			position: relative;
+			display: inline-block;
+			width: $switch_width;
+			height: $switch_height;
+			background: $switch_inactive_bg;
+			border-radius: $switch_height / 2;
+			border: solid $switch_border_size $switch_border_color;
 
-		.astro-capture-details-block_image {
+			&::before {
+				font-size: 12px;
+				position: absolute;
+				color: #fff;
+				height: $button_size;
+				width: $button_size;
+				left: $button_padding;
+				text-align: center;
+				line-height: $button_size;
+				top: calc(50% - ($button_size / 2) + 2px);
+			}
+
+			&::after {
+				content: '';
+				box-sizing: border-box;
+				display: block;
+				position: absolute;
+				height: $button_size;
+				width: $button_size;
+				top: calc(50% - ($button_size / 2));
+				border-radius: 50%;
+			}
+		}
+
+		&-checkbox ~ .astro-checkbox-toggle {
+			&::after {
+				transition: ease all .3s;
+				left: $button_padding;
+				background: $button_inactive_color;
+			}
+		}
+
+		&-checkbox:checked ~ .astro-checkbox-toggle {
+			&::after {
+				background: $button_active_color;
+				left: calc(100% - $button_size - $button_padding);
+			}
+		}
+
+		&-checkbox:checked ~ .astro-checkbox-toggle {
+			&::before {
+				content: "ON";
+			}
+			background: $switch_active_bg;
+		}
+	}
+}
+
+.wp-block-create-block-astro-capture-details-block {
+	.hidden { display: none; }
+
+	.main-image-wrapper {
+		position: relative;
+		display: flex;
+		flex-direction: row-reverse;
+		gap: var(--wp--preset--spacing--20);
+
+		.main-image,
+		.annotated-image {
 			position: absolute;
 			top: 0;
 			left: 0;
-			right: 0;
-			bottom: 0;;
-			object-fit: cover;
-			background-repeat: no-repeat;
-			background-size: 200%;
-			background-position: center center;	
-
-			filter: blur(7px) opacity(.4);
-			-webkit-filter: blur(7px) opacity(.4);
 		}
 
-		.astro-capture-details-group,
-		.astro-capture-details-block {
-			flex: 1 1 0px;
-			width: 100%;
-		}
-
-		.astro-capture-details-group {
+		aside.image-actions {
+			padding: 8px;    
 			display: flex;
-			flex-wrap: wrap;
-			flex-grow: 2;
-			gap: 24px;
-			flex: 1;
-		}
-		
-		.astro-capture-details-block h6.astro-capture-details-block_header {
-			margin: 0;
-			text-wrap: nowrap;
-			color: var(--theme-palette-color-4);
-		}
-		
-		.astro-capture-details-block p.astro-capture-details-block_value {
-			margin: 0;
-			display: inline-flex;
-			align-items: center;
-			text-wrap: nowrap;
+			flex-direction: column;
+			gap: var(--wp--preset--spacing--30);
 
-			a {
-				@include link_styling();
+			.annotation-checkbox {
+				@include astroCheckbox('Annotate');
 			}
 
-			code {
-				@include code_styling();
+			.astro-button {
+				padding: 8px 12px;
+				background-color: var(--wp--preset--color--secondary);
+				border-radius: 4px;
+				border-width: 0;
+				font-size: var(--wp--preset--font-size--medium);
+				color: var(--wp--preset--color--base);
 			}
 		}
 	}
 }
  
-.stk-block-heading__bottom-line {
-	background: var(--theme-palette-color-1) !important;
-}
-
-.stk-block-icon-list .stk-block-icon-list__ul .stk-block-icon-list-item .stk-block-icon-list-item__content {
-	a { @include link_styling(); }
-
-	.stk--svg-wrapper .stk--inner-svg svg :is(use,g,path,rect,polygon,ellipse) {
-		fill: var(--theme-palette-color-1) !important;
-	}
-}

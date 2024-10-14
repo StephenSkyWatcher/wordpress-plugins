@@ -17,14 +17,17 @@
     }
   },
   "attributes": {
-    "alignment": {
-      "enum": [
-        "left",
-        "right",
-        "top",
-        "bottom"
-      ],
-      "default": "left"
+    "designation": {
+      "type": "string",
+      "default": ""
+    },
+    "other_designations": {
+      "type": "string",
+      "default": ""
+    },
+    "bortle": {
+      "type": "string",
+      "default": "5"
     },
     "image": {
       "type": "string",
@@ -119,11 +122,40 @@
     "fieldunits": {
       "type": "string",
       "default": "degrees"
+    },
+    "magnitude": {
+      "type": "number",
+      "default": ""
+    },
+    "surfaceBrightness": {
+      "type": "string",
+      "default": ""
+    },
+    "arcmin": {
+      "type": "number",
+      "default": ""
+    },
+    "distance": {
+      "type": "number",
+      "default": ""
+    },
+    "constellation": {
+      "type": "string",
+      "default": ""
+    },
+    "season": {
+      "type": "string",
+      "default": ""
+    },
+    "objectType": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "astro-capture-details-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "render": "file:./render.php"
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
 }

@@ -19,6 +19,9 @@
   flex-direction: column;
   position: relative;
 }
+.astro-capture-details-media-container--with-image .components-placeholder__instructions {
+  display: none;
+}
 .astro-capture-details-media-container--with-image .dashicons-hourglass {
   position: absolute;
   top: 50%;
